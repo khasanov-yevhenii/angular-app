@@ -1,12 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
-
-:root {
-	--primary-color: #dc3545;
-	--dark-color: #333333;
-	--light-color: #f4f4f4;
-	--danger-color: #dc3545;
-	--success-color: #28a745;
-}
+@import "assets/colors";
 
 * {
 	box-sizing: border-box;
@@ -23,7 +16,7 @@ body {
 }
 
 a {
-	color: var(--primary-color);
+	color: $primary-color;
 	cursor: pointer;
 	text-decoration: none;
 
@@ -48,19 +41,19 @@ img {
 }
 
 .text-primary {
-	color: var(--primary-color);
+	color: $primary-color;
 }
 
 .text-dark {
-	color: var(--dark-color);
+	color: $dark-color;
 }
 
 .text-success {
-	color: var(--success-color);
+	color: $success-color;
 }
 
 .text-danger {
-	color: var(--danger-color);
+	color: $danger-color;
 }
 
 .text-center {
@@ -93,7 +86,7 @@ img {
 
 .btn {
 	display: inline-block;
-	background: var(--light-color);
+	background: $light-color;
 	color: #333;
 	padding: 0.4rem 1.3rem;
 	font-size: 1rem;
@@ -105,7 +98,7 @@ img {
 
 	&:disabled {
 		cursor: not-allowed;
-		background: var(--light-color);
+		background: $light-color;
 		color: #111;
 	}
 }
@@ -133,7 +126,7 @@ img {
 	padding: 0.2rem 0.7rem;
 	text-align: center;
 	margin: 0.3rem;
-	background: var(--light-color);
+	background: $light-color;
 	color: #333;
 	border-radius: 5px;
 }
@@ -142,7 +135,7 @@ img {
 	padding: 0.7rem;
 	margin: 1rem 0;
 	opacity: 0.9;
-	background: var(--light-color);
+	background: $light-color;
 	color: #333;
 }
 
@@ -150,7 +143,7 @@ img {
 .bg-primary,
 .badge-primary,
 .alert-primary {
-	background: var(--primary-color);
+	background: $primary-color;
 	color: #fff;
 }
 
@@ -158,7 +151,7 @@ img {
 .bg-light,
 .badge-light,
 .alert-light {
-	background: var(--light-color);
+	background: $light-color;
 	color: #333;
 }
 
@@ -166,7 +159,7 @@ img {
 .bg-dark,
 .badge-dark,
 .alert-dark {
-	background: var(--dark-color);
+	background: $dark-color;
 	color: #fff;
 }
 
@@ -174,7 +167,7 @@ img {
 .bg-danger,
 .badge-danger,
 .alert-danger {
-	background: var(--danger-color);
+	background: $danger-color;
 	color: #fff;
 }
 
@@ -182,7 +175,7 @@ img {
 .bg-success,
 .badge-success,
 .alert-success {
-	background: var(--success-color);
+	background: $success-color;
 	color: #fff;
 }
 
@@ -214,15 +207,15 @@ img {
 	margin-bottom: 0.8rem;
 
 	&.invalid {
-		color: var(--primary-color);
+		color: $primary-color;
 
 		input {
-			border-color: var(--primary-color);
+			border-color: $primary-color;
 		}
 	}
 
 	.validation {
-		color: var(--primary-color);
+		color: $primary-color;
 	}
 }
 
@@ -256,7 +249,7 @@ table td {
 }
 
 table th {
-	background: var(--light-color);
+	background: $light-color;
 }
 
 .navbar {
@@ -271,7 +264,7 @@ table th {
 
 	&.main {
 		justify-content: center;
-		border-bottom: 1px solid var(--dark-color);
+		border-bottom: 1px solid $dark-color;
 	}
 
 	ul {
@@ -279,7 +272,7 @@ table th {
 	}
 
 	li.active a {
-		color: var(--dark-color);
+		color: $dark-color;
 		font-weight: bold;
 		cursor: default;
 	}
@@ -290,7 +283,7 @@ table th {
 		margin: 0 0.25rem;
 
 		&:hover {
-			color: var(--light-color);
+			color: $light-color;
 		}
 	}
 }

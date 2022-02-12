@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../shared/models/user.interface';
 import { AuthService } from '../shared/services/auth.service';
@@ -9,6 +9,7 @@ import { finalize } from 'rxjs';
 	selector: 'app-login-page',
 	templateUrl: './login-page.component.html',
 	styleUrls: ['./login-page.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginPageComponent implements OnInit {
 	formGroup!: FormGroup;
