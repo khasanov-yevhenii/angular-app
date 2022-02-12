@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserInterface } from '../../models/user.interface';
+import { User } from '../../shared/models/user.interface';
+import { AuthService } from '../shared/services/auth.service';
+import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 
 @Component({
 	selector: 'app-login-page',
@@ -9,6 +12,9 @@ import { UserInterface } from '../../models/user.interface';
 })
 export class LoginPageComponent implements OnInit {
 	formGroup!: FormGroup;
+	submitted = false;
+
+	constructor(private authService: AuthService, private router: Router) {}
 
 	ngOnInit(): void {
 		this.initializeForm();
@@ -19,8 +25,18 @@ export class LoginPageComponent implements OnInit {
 			return;
 		}
 
-		const user: UserInterface = this.formGroup.value;
-		console.log(user);
+		this.submitted = true;
+		const user: User = this.formGroup.value;
+
+		this.authService
+			.login(user)
+			.pipe(
+				finalize(() => {
+					this.submitted = false;
+					this.formGroup.reset();
+				})
+			)
+			.subscribe(() => this.router.navigate(['/admin', 'dashboard']));
 	}
 
 	private initializeForm(): void {
