@@ -6,9 +6,10 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { SearchPostsPipe } from './shared/pipes/search-posts.pipe';
 
 const routes: Routes = [
 	{
@@ -44,7 +45,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [CommonModule, RouterModule.forChild(routes), ReactiveFormsModule, SharedModule],
+	imports: [CommonModule, RouterModule.forChild(routes), ReactiveFormsModule, FormsModule, SharedModule],
 	exports: [RouterModule],
 	declarations: [
 		AdminLayoutComponent,
@@ -52,6 +53,7 @@ const routes: Routes = [
 		DashboardPageComponent,
 		CreatePageComponent,
 		EditPageComponent,
+		SearchPostsPipe,
 	],
 	providers: [AuthGuard],
 })

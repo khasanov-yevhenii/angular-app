@@ -1,5 +1,5 @@
 <div class="form-control">
-	<input type="text" placeholder="Find post ..." [disabled]="!posts.length" />
+	<input type="text" placeholder="Find post ..." [disabled]="!posts.length" [(ngModel)]="searchQuery" />
 </div>
 
 <table *ngIf="posts.length; else loading">
@@ -13,7 +13,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let post of posts">
+		<tr *ngFor="let post of posts | searchPosts: searchQuery">
 			<td>{{ post.id }}</td>
 			<td>{{ post.author }}</td>
 			<td>{{ post.title }}</td>
