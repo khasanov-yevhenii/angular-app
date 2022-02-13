@@ -7,7 +7,7 @@
 
 	<div class="form-control" [class.invalid]="formGroup.get('email')?.touched && formGroup.get('email')?.invalid">
 		<label for="email">Email:</label>
-		<input id="email" type="text" formControlName="email" />
+		<input id="email" type="email" formControlName="email" />
 		<div class="validation" *ngIf="formGroup.get('email')?.touched && formGroup.get('email')?.invalid">
 			<small *ngIf="formGroup.get('email')?.errors?.['required']">email is required</small>
 			<small *ngIf="formGroup.get('email')?.errors?.['email']">wrong email format</small>
