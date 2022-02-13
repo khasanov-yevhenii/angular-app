@@ -7,7 +7,6 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
 import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from './shared/services/auth.service';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from './shared/guards/auth.guard';
 
@@ -54,6 +53,6 @@ const routes: Routes = [
 		CreatePageComponent,
 		EditPageComponent,
 	],
-	providers: [AuthService, AuthGuard],
+	providers: [AuthGuard],
 })
 export class AdminModule {}

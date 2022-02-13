@@ -29,9 +29,11 @@ export class CreatePageComponent implements OnInit {
 		if (this.formGroup.invalid) {
 			return;
 		}
+
 		const post: Post = this.formGroup.value;
 		post.date = new Date();
-		this.postsService.create(post).subscribe((res) => console.log(res));
+
+		this.postsService.create(post).subscribe(() => this.formGroup.reset());
 	}
 
 	private initializeForm(): void {

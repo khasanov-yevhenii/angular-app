@@ -6,7 +6,9 @@ import { environment } from '../../../../environments/environment';
 import { AuthResponse } from '../models/auth-response.interface';
 import { ErrorCodesEnum } from '../enums/error-codes.enum';
 
-@Injectable()
+@Injectable({
+	providedIn: 'root',
+})
 export class AuthService {
 	public error$ = new Subject<string>();
 
