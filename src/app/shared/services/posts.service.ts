@@ -12,7 +12,7 @@ import { GetPostsResponse } from '../../admin/shared/models/get-posts-response.i
 export class PostsService {
 	constructor(private http: HttpClient) {}
 
-	create(post: Post): Observable<Post> {
+	createPost(post: Post): Observable<Post> {
 		return this.http.post<CreatePostResponse>(`${environment.baseUrl}/posts.json`, post).pipe(
 			map((response) => ({
 				...post,
@@ -30,5 +30,9 @@ export class PostsService {
 				}))
 			)
 		);
+	}
+
+	removePost(postId: string): Observable<void> {
+		return this.http.delete<void>(`${environment.baseUrl}/posts/${postId}.json`);
 	}
 }

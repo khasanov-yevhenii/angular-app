@@ -23,6 +23,18 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 		this.subscription.unsubscribe();
 	}
 
+	removePost(postId: string | undefined): void {
+		if (!postId) {
+			return;
+		}
+
+		this.subscription.add(
+			this.postsService
+				.removePost(postId)
+				.subscribe(() => (this.posts = this.posts.filter((post) => post.id !== postId)))
+		);
+	}
+
 	private getPosts(): void {
 		this.subscription.add(this.postsService.getPosts().subscribe((posts) => (this.posts = posts)));
 	}

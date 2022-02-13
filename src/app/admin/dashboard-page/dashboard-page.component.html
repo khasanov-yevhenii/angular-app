@@ -20,7 +20,7 @@
 			<td>{{ post.date | date: "short" }}</td>
 			<td>
 				<button class="btn btn-link" [routerLink]="['/admin', 'post', post.id, 'edit']">Edit</button>
-				<button>Remove</button>
+				<button (click)="removePost(post.id)">Remove</button>
 			</td>
 		</tr>
 	</tbody>
