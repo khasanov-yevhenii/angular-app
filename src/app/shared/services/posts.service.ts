@@ -35,4 +35,14 @@ export class PostsService {
 	removePost(postId: string): Observable<void> {
 		return this.http.delete<void>(`${environment.baseUrl}/posts/${postId}.json`);
 	}
+
+	getPostById(postId: string): Observable<Post> {
+		return this.http
+			.get<Post>(`${environment.baseUrl}/posts/${postId}.json`)
+			.pipe(map((post) => ({ ...post, id: postId })));
+	}
+
+	updatePost(post: Post): Observable<Post> {
+		return this.http.patch<Post>(`${environment.baseUrl}/posts/${post.id}.json`, post);
+	}
 }
