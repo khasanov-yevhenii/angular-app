@@ -1,0 +1,32 @@
+<form class="card" [formGroup]="formGroup">
+	<h2>Log in to the admin panel</h2>
+
+	<div class="alert alert-danger" *ngIf="authService.error$ | async as error">
+		{{ error }}
+	</div>
+
+	<div class="form-control" [class.invalid]="formGroup.get('email')?.touched && formGroup.get('email')?.invalid">
+		<label for="email">Email:</label>
+		<input id="email" type="email" formControlName="email" />
+		<div class="validation" *ngIf="formGroup.get('email')?.touched && formGroup.get('email')?.invalid">
+			<small *ngIf="formGroup.get('email')?.errors?.['required']">email is required</small>
+			<small *ngIf="formGroup.get('email')?.errors?.['email']">wrong email format</small>
+		</div>
+	</div>
+
+	<div class="form-control" [class.invalid]="formGroup.get('password')?.touched && formGroup.get('password')?.invalid">
+		<label for="password">Password:</label>
+		<input id="password" type="text" formControlName="password" />
+		<div class="validation" *ngIf="formGroup.get('password')?.touched && formGroup.get('password')?.invalid">
+			<small *ngIf="formGroup.get('password')?.errors?.['required']">password is required</small>
+			<small *ngIf="formGroup.get('password')?.errors?.['minlength']">
+				password shouldn't be less then {{formGroup.get('password')?.errors?.['minlength'].requiredLength}}. Currently
+				it is {{formGroup.get('password')?.errors?.['minlength'].actualLength}}
+			</small>
+		</div>
+	</div>
+
+	<button class="btn btn-primary" type="submit" (click)="submit()" [disabled]="formGroup.invalid || submitted">
+		log in
+	</button>
+</form>

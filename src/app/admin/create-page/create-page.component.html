@@ -1,0 +1,26 @@
+<form [formGroup]="formGroup" (ngSubmit)="submit()">
+	<h1>Create a new post:</h1>
+
+	<div class="form-control" [class.invalid]="formGroup.get('title')?.touched && formGroup.get('title')?.invalid">
+		<label for="title">Post title:</label>
+		<input id="title" type="text" formControlName="title" />
+		<div class="validation" *ngIf="formGroup.get('title')?.touched && formGroup.get('title')?.invalid">
+			<small *ngIf="formGroup.get('title')?.errors?.['required']">title is required</small>
+		</div>
+	</div>
+
+	<div class="form-control">
+		<label for="title">Post content:</label>
+		<quill-editor formControlName="content"></quill-editor>
+	</div>
+
+	<div class="form-control" [class.invalid]="formGroup.get('author')?.touched && formGroup.get('author')?.invalid">
+		<label for="author">Author:</label>
+		<input id="author" type="text" formControlName="author" />
+		<div class="validation" *ngIf="formGroup.get('author')?.touched && formGroup.get('author')?.invalid">
+			<small *ngIf="formGroup.get('author')?.errors?.['required']">author is required</small>
+		</div>
+	</div>
+
+	<button class="btn btn-dark" type="submit" [disabled]="formGroup.invalid">submit</button>
+</form>

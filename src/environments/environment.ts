@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+	production: false,
+	apiKey: 'AIzaSyBmPqBP4SGcE3bB1hYxuHWhiPSVbQHm1Xw',
+	baseUrl: 'https://angular-blog-14133-default-rtdb.europe-west1.firebasedatabase.app/',
 };
 
 /*
