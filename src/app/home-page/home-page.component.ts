@@ -10,11 +10,11 @@ import { Post } from '../admin/create-page/create-page.component';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePageComponent implements OnInit {
-  posts$!: Observable<Post[]>;
+	posts$!: Observable<Post[]>;
 
-  constructor(private postsService: PostsService) {}
+	constructor(private postsService: PostsService) {}
 
-  ngOnInit(): void {
-    this.posts$ = this.postsService.getPosts();
-  }
+	ngOnInit(): void {
+		this.posts$ = this.postsService.getPosts();
+	}
 }
