@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { PostsService } from '../shared/services/posts.service';
+import { Observable } from 'rxjs';
+import { Post } from '../admin/create-page/create-page.component';
 
 @Component({
 	selector: 'app-home-page',
@@ -6,4 +9,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 	styleUrls: ['./home-page.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePageComponent {}
+export class HomePageComponent implements OnInit {
+  posts$!: Observable<Post[]>;
+
+  constructor(private postsService: PostsService) {}
+
+  ngOnInit(): void {
+    this.posts$ = this.postsService.getPosts();
+  }
+}

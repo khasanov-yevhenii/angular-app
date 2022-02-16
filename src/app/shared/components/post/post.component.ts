@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Post } from '../../../admin/create-page/create-page.component';
 
 @Component({
 	selector: 'app-post',
@@ -6,4 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 	styleUrls: ['./post.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PostComponent {}
+export class PostComponent {
+  @Input() post!: Post;
+}
