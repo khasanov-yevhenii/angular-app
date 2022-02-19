@@ -2,26 +2,46 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { of } from 'rxjs';
 
 import { LoginPageComponent } from './login-page.component';
+import { AuthService } from '../shared/services/auth.service';
+import { DashboardPageComponent } from '../dashboard-page/dashboard-page.component';
 
 describe('LoginPageComponent', () => {
 	let component: LoginPageComponent;
 	let fixture: ComponentFixture<LoginPageComponent>;
+	let service: AuthService;
 
-	beforeEach(async () => {
-		await TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule, RouterTestingModule, ReactiveFormsModule],
+	beforeEach(() => {
+		TestBed.configureTestingModule({
 			declarations: [LoginPageComponent],
-		}).compileComponents();
+			providers: [AuthService],
+			imports: [
+				HttpClientTestingModule,
+				ReactiveFormsModule,
+				RouterTestingModule.withRoutes([{ path: 'admin/dashboard', component: DashboardPageComponent }]),
+			],
+		});
 
 		fixture = TestBed.createComponent(LoginPageComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
+		service = TestBed.get(AuthService);
 	});
 
-	it('should be created', () => {
+	it('should be defined', () => {
 		expect(component).toBeDefined();
+	});
+
+	it('should init form', () => {
+		const componentSpy = spyOn<any>(component, 'initializeForm').and.callThrough();
+
+		expect(componentSpy).not.toHaveBeenCalled();
+
+		component.ngOnInit();
+
+		expect(componentSpy).toHaveBeenCalledTimes(1);
 	});
 
 	it('should create form with email and password controls', () => {
@@ -52,5 +72,16 @@ describe('LoginPageComponent', () => {
 		component.submit();
 
 		expect(component.submitted).toBeTruthy();
+	});
+
+	it('login method should be called if form is valid', () => {
+		component.formGroup.controls['email'].setValue('admin@gmail.com');
+		component.formGroup.controls['password'].setValue('qwerty');
+
+		const authService = spyOn(service, 'login').and.returnValue(of(null));
+
+		component.submit();
+
+		expect(authService).toHaveBeenCalled();
 	});
 });
