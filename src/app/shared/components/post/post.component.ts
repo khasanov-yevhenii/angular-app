@@ -8,5 +8,5 @@ import { Post } from '../../../admin/create-page/create-page.component';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostComponent {
-	@Input() post!: Post;
+	@Input() post: Nullable<Post>;
 }

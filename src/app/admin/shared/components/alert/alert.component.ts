@@ -28,7 +28,7 @@ export class AlertComponent implements OnInit, OnDestroy {
 
 	private getAlert(): void {
 		this.subscription.add(
-			this.alertService.alert$.subscribe((alert) => {
+			this.alertService.alert$.subscribe((alert: Alert) => {
 				this.alert = alert;
 				this.changeDetectorRef.detectChanges();
 
