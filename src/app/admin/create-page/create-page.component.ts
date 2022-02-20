@@ -2,14 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PostsService } from '../../shared/services/posts.service';
 import { AlertService } from '../shared/services/alert.service';
-
-export interface Post {
-	id?: string;
-	title: string;
-	content: string;
-	author: string;
-	date: Date;
-}
+import { Post } from '../../shared/models/post.interface';
 
 @Component({
 	selector: 'app-create-page',

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostsService } from '../../shared/services/posts.service';
-import { Post } from '../create-page/create-page.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { finalize, Subscription } from 'rxjs';
+import { Post } from '../../shared/models/post.interface';
 
 @Component({
 	selector: 'app-edit-page',

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { PostsService } from '../shared/services/posts.service';
 import { Observable } from 'rxjs';
-import { Post } from '../admin/create-page/create-page.component';
+import { Post } from '../shared/models/post.interface';
 
 @Component({
 	selector: 'app-home-page',

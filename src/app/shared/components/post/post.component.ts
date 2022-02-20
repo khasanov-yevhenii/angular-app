@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Post } from '../../../admin/create-page/create-page.component';
+import { Post } from '../../models/post.interface';
 
 @Component({
 	selector: 'app-post',

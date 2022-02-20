@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PostComponent } from './post.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
-import { Post } from '../../../admin/create-page/create-page.component';
+import { Post } from '../../models/post.interface';
 
 const post: Post = {
 	id: 'Some id',

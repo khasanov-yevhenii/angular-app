@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Post } from '../admin/create-page/create-page.component';
 import { PostsService } from '../shared/services/posts.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Post } from '../shared/models/post.interface';
 
 @Component({
 	selector: 'app-post-page',
