@@ -11,6 +11,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { SearchPostsPipe } from './shared/pipes/search-posts.pipe';
 import { AlertComponent } from './shared/components/alert/alert.component';
+import { FormGuard } from './shared/guards/form.guard';
 
 const routes: Routes = [
 	{
@@ -35,11 +36,13 @@ const routes: Routes = [
 				path: 'create',
 				component: CreatePageComponent,
 				canActivate: [AuthGuard],
+				canDeactivate: [FormGuard],
 			},
 			{
 				path: 'post/:id/edit',
 				component: EditPageComponent,
 				canActivate: [AuthGuard],
+				canDeactivate: [FormGuard],
 			},
 		],
 	},
