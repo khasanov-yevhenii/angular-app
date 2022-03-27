@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PostsService } from '../../shared/services/posts.service';
 import { AlertService } from '../shared/services/alert.service';
 
@@ -9,6 +9,7 @@ export interface Post {
 	content: string;
 	author: string;
 	date: Date;
+	tags?: string[];
 }
 
 @Component({
@@ -22,6 +23,10 @@ export class CreatePageComponent implements OnInit {
 
 	constructor(private postsService: PostsService, private alertService: AlertService) {}
 
+	get tags(): FormArray {
+		return this.formGroup!.get('tags') as FormArray;
+	}
+
 	ngOnInit(): void {
 		this.initializeForm();
 	}
@@ -32,6 +37,15 @@ export class CreatePageComponent implements OnInit {
 		}
 
 		this.createPost();
+	}
+
+	addTag(): void {
+		if (this.tags.invalid) {
+			return;
+		}
+
+		const control = new FormControl('', [Validators.required, Validators.minLength(2)]);
+		this.tags.push(control);
 	}
 
 	private createPost(): void {
@@ -49,6 +63,7 @@ export class CreatePageComponent implements OnInit {
 			title: new FormControl(null, [Validators.required]),
 			content: new FormControl(null, [Validators.required]),
 			author: new FormControl(null, [Validators.required]),
+			tags: new FormArray([]),
 		});
 	}
 }

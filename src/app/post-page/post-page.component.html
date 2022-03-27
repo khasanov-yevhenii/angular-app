@@ -5,6 +5,8 @@
 		<button class="btn btn-link" routerLink="/">Go to main</button>
 	</div>
 
+	<i *ngFor="let tag of post.tags">{{ tag }} </i>
+
 	<div class="info">
 		<strong>{{ post.author }}</strong>
 		<small>{{ post.date | date }}</small>

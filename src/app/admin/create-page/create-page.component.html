@@ -1,4 +1,4 @@
-<form [formGroup]="formGroup" (ngSubmit)="submit()">
+<form class="form" [formGroup]="formGroup" (ngSubmit)="submit()">
 	<h1>Create a new post:</h1>
 
 	<div class="form-control" [class.invalid]="formGroup.get('title')?.touched && formGroup.get('title')?.invalid">
@@ -19,6 +19,20 @@
 		<input id="author" type="text" formControlName="author" />
 		<div class="validation" *ngIf="formGroup.get('author')?.touched && formGroup.get('author')?.invalid">
 			<small *ngIf="formGroup.get('author')?.errors?.['required']">author is required</small>
+		</div>
+	</div>
+
+	<div class="form__tags-section" formGroupName="tags">
+		<label for="author">Tags:</label>
+		<div class="form__tags-section-inputs">
+			<div
+				class="form__tags-section-input form-control"
+				*ngFor="let control of tags.controls; let idx = index"
+				[class.invalid]="control.touched && control.invalid"
+			>
+				<input type="text" [formControlName]="idx" />
+			</div>
+			<button class="btn btn-primary" *ngIf="tags.controls.length !== 6" (click)="addTag()">Add new tag</button>
 		</div>
 	</div>
 
