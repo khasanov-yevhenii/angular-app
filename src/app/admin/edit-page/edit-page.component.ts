@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { ActivatedRoute } from '@angular/router';
 import { PostsService } from '../../shared/services/posts.service';
 import { Post } from '../create-page/create-page.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { finalize, Subscription } from 'rxjs';
 
 @Component({
@@ -13,7 +13,7 @@ import { finalize, Subscription } from 'rxjs';
 })
 export class EditPageComponent implements OnInit, OnDestroy {
 	private subscription = new Subscription();
-	formGroup!: FormGroup;
+	formGroup!: UntypedFormGroup;
 	post!: Post;
 	submitted = false;
 
@@ -75,9 +75,9 @@ export class EditPageComponent implements OnInit, OnDestroy {
 	}
 
 	private initializeForm(post: Post): void {
-		this.formGroup = new FormGroup({
-			title: new FormControl(post.title, [Validators.required]),
-			content: new FormControl(post.content, [Validators.required]),
+		this.formGroup = new UntypedFormGroup({
+			title: new UntypedFormControl(post.title, [Validators.required]),
+			content: new UntypedFormControl(post.content, [Validators.required]),
 		});
 	}
 }

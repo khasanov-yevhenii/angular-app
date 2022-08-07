@@ -1,7 +1,5 @@
 import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { registerLocaleData } from '@angular/common';
-import enLocale from '@angular/common/locales/en-US-POSIX';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,8 +12,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
-registerLocaleData(enLocale, 'en-US');
 
 const INTERCEPTOR_PROVIDER: Provider = {
 	provide: HTTP_INTERCEPTORS,

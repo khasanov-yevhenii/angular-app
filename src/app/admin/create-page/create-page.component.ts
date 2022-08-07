@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { PostsService } from '../../shared/services/posts.service';
 import { AlertService } from '../shared/services/alert.service';
 
@@ -18,7 +18,7 @@ export interface Post {
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreatePageComponent implements OnInit {
-	formGroup!: FormGroup;
+	formGroup!: UntypedFormGroup;
 
 	constructor(private postsService: PostsService, private alertService: AlertService) {}
 
@@ -45,10 +45,10 @@ export class CreatePageComponent implements OnInit {
 	}
 
 	private initializeForm(): void {
-		this.formGroup = new FormGroup({
-			title: new FormControl(null, [Validators.required]),
-			content: new FormControl(null, [Validators.required]),
-			author: new FormControl(null, [Validators.required]),
+		this.formGroup = new UntypedFormGroup({
+			title: new UntypedFormControl(null, [Validators.required]),
+			content: new UntypedFormControl(null, [Validators.required]),
+			author: new UntypedFormControl(null, [Validators.required]),
 		});
 	}
 }
